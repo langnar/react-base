@@ -1,18 +1,18 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const port = process.env.PORT || 3000;
+const port = 3001;
 
 module.exports = {
 	context: __dirname,
 	entry: './src/App.jsx',
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js',
+		filename: 'bundle.js'
 	},
 	resolve: {
 		modules: ['node_modules', './src'],
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx']
 	},
 	module: {
 		rules: [
@@ -20,13 +20,13 @@ module.exports = {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					use: 'css-loader!sass-loader'
-				}),
+				})
 			},
 			{
 				test: /\.css$/,
 				use: ExtractTextPlugin.extract({
 					use: 'css-loader'
-				}),
+				})
 			},
 			{
 				test: /\.(js|jsx)$/,
@@ -46,12 +46,10 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new ExtractTextPlugin('bundle.css'),
-	],
+	plugins: [new ExtractTextPlugin('bundle.css')],
 	devServer: {
 		port,
 		historyApiFallback: true,
-		publicPath: '/dist/',
+		publicPath: '/dist/'
 	}
 };
